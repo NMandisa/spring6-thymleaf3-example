@@ -18,9 +18,32 @@
 		<maven.compiler.target>17</maven.compiler.target>
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
 		<spring.version>6.0.10</spring.version>
+		<spring-security.version>6.1.5</spring-security.version>
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
 		<dependency>
 		<groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
