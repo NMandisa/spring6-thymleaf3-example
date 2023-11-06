@@ -1,4 +1,4 @@
-package za.co.squnga.web.config;
+package za.co.squnga.web;
 
 public class WebApplicationInitializer {
 }
