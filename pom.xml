@@ -19,6 +19,8 @@
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
 		<spring.version>6.0.10</spring.version>
 		<spring-security.version>6.1.5</spring-security.version>
+		<project.basedir>src/main</basedir>
+		<webXmlPath>src/main/webapp/WEB-INF/webXml</webXmlPath>
 	</properties>
 
 	<dependencies>
@@ -92,6 +94,7 @@
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -106,8 +109,17 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.2</version>
+				<configuration>
+					<webResources>
+						<resource>
+						  <directory>${project.basedir}/resources</directory>
+						  <filtering>true</filtering>
+						</resource>
+					  </webResources>
+					<warSourceDirectory>${project.basedir}/webapp</warSourceDirectory>
+					<webXml>${webXmlPath}</webXml>
+				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
 </project>
