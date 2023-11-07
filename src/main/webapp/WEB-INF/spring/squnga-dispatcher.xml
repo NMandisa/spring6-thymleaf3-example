@@ -7,16 +7,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
     http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926" />
+<!--	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926" />-->
+<!--	<context:component-scan  base-package="za.co.squnga" />-->
 	<mvc:annotation-driven />
-	<context:component-scan
-		base-package="za.co.squnga" />
+
 
 
 	<bean id="templateResolver"
@@ -36,9 +36,9 @@
 
 	<bean class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
-		<property name="order" value="1" />
-<!--		<property name="viewNames" value="/thymeleaf/*" />-->
-		<property name="viewNames" value="*.html,*.xhtml" />
+		<!--<property name="order" value="1" />
+		<property name="viewNames" value="/thymeleaf/*" />
+		<property name="viewNames" value="*.html,*.xhtml" />-->
 	</bean>
 
 	<!-- Message bundle -->
