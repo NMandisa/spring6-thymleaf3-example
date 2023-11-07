@@ -19,8 +19,6 @@
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
 		<spring.version>6.0.10</spring.version>
 		<spring-security.version>6.1.5</spring-security.version>
-		<project.basedir>src/main</basedir>
-		<webXmlPath>src/main/webapp/WEB-INF/webXml</webXmlPath>
 	</properties>
 
 	<dependencies>
@@ -94,16 +92,13 @@
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<finalName>squnga-webapp</finalName>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -112,12 +107,12 @@
 				<configuration>
 					<webResources>
 						<resource>
-						  <directory>${project.basedir}/resources</directory>
-						  <filtering>true</filtering>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
 						</resource>
-					  </webResources>
-					<warSourceDirectory>${project.basedir}/webapp</warSourceDirectory>
-					<webXml>${webXmlPath}</webXml>
+					</webResources>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF</webXml>
 				</configuration>
 			</plugin>
 		</plugins>
