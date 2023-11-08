@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>za.co.squnga</groupId>
-	<artifactId>squnga-webapp-demo</artifactId>
+	<artifactId>squnga-webapp</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -92,37 +92,39 @@
 	</dependencies>
 
 	<build>
-		<finalName>final-squnga-webapp</finalName>
+		<finalName>squnga-webapp</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
-		<outputDirectory>${project.build.directory}/target</outputDirectory>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+			</plugin>
+			
+			<plugin>
+        			<groupId>org.apache.maven.plugins</groupId>
+        			<artifactId>maven-surefire-plugin</artifactId>
+        			<version>3.2.2</version>
+        		<configuration>
+          			<skipTests>true</skipTests>
+        		</configuration>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.2</version>
 				<configuration>
-					<warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-					<webXml>${basedir}/src/main/webapp/WEB-INF</webXml>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF</webXml>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
-	<developers>
-		<developer>
-			<id>NMMkhungo</id>
-			<name>Noxolo Mkhungo</name>
-			<email>noxolomandisamkhungo@gmail.com</email>
-			<timezone>+2</timezone>
-		</developer>
-	</developers>
 </project>
