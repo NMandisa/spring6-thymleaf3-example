@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 /**
  * @author Noxolo.Mkhungo
@@ -15,12 +17,17 @@ import org.springframework.security.web.SecurityFilterChain;
  */
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfiguration  {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SecurityConfiguration.class);
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-       //http().httpBasic();
+        http.csrf(csrf ->csrf.disable()).authorizeHttpRequests(auth-> {
+            auth.requestMatchers(("/")).permitAll();
+            auth.anyRequest().authenticated();
+        });
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
