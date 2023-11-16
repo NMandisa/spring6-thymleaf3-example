@@ -18,16 +18,18 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration  {
+public class SecurityConfiguration {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SecurityConfiguration.class);
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf(csrf ->csrf.disable()).authorizeHttpRequests(auth-> {
-            auth.requestMatchers(("/")).permitAll();
+        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth-> {
+            auth.requestMatchers(("/")).anonymous().anyRequest().authenticated();
             auth.anyRequest().authenticated();
         });
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+      /*  http.csrf(csrf ->csrf.disable())
+                .authorizeRequests().requestMatchers("/").anonymous().anyRequest().authenticated();*/
 
         return http.build();
     }
