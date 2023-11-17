@@ -1,4 +1,4 @@
-package za.co.squnga.web.exception;
+package za.co.squnga.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
