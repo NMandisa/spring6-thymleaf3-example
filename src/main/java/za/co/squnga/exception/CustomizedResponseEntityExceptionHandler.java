@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ErrorResponseDTO> handleAllExceptions(Exception ex, WebRequest request) throws Exception {
+    public final ResponseEntity<ErrorResponseDTO> handleAllExceptions(Exception ex, WebRequest request){
         ErrorResponseDTO error = new ErrorResponseDTO(LocalDateTime.now(),
                 ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
