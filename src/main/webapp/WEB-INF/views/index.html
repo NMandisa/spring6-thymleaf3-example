@@ -7,7 +7,7 @@
                                                 ~{::title},
                                                 ~{:: #home-header},
                                                 ~{:: #home-nav},
-                                                ~{:: #home-page-content},
+                                                ~{:: #home-main-content},
                                                 ~{:: #home-footer}
                                                )}">
 
@@ -21,14 +21,14 @@
 		<p>My first paragraph.</p>
 	</div>
 	<div id="home-nav" th:replace="~{fragraments/home-page-fragment :: nav-default}">
-		Home Nav
+		<!--Home Nav-->
 	</div>
 	<div id="home-main-content">
 		<h2>Home content</h2>
 		<div>Content of Home Page</div>
 	</div>
 	<div id="home-footer" th:replace="~{fragraments/home-page-fragment :: copyright}">
-		Footer
+		<!--Footer-->
 	</div>
 
 </body>

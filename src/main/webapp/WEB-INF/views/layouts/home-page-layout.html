@@ -7,15 +7,14 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <title th:replace="${title}"></title>
-    <link rel="stylesheet" type="text/css" th:href="@{../../resources/theme/css/bootstrap/bootstrap.min.css}"
-          href="../../resources/theme/css/bootstrap/bootstrap.min.css"/>
+    <link th:href="@{/theme/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
 </head>
 <body>
-<header th:insert="${header} ?: ~{}">
+<header th:insert="${header} ?: ~{}" class="">
 <!--    Header here-->
 </header>
 <section>
-    <nav th:insert="${nav} ?: ~{}">
+    <nav th:insert="${nav} ?: ~{}" >
         <!--Navigation here-->
     </nav>
 </section>

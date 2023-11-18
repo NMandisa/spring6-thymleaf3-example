@@ -1,19 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <title>Home Page Fragment</title>
 </head>
 <body>
 
 <!-- Default Navigator -->
-<ul th:fragment = "nav-default">
-    <li>
+<ul th:fragment = "nav-default" class="nav nav-tabs" >
+    <li class="nav-item">
         <a th:href="@{/}">Home</a>
     </li>
 </ul>
 
-<div th:fragment="copyright">
+<div th:fragment="copyright" >
     <!--Copy Rights Here -->
 </div>
 </body>
