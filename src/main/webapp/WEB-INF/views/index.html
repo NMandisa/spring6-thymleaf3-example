@@ -1,18 +1,37 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/home-page-layout}"
+	  th:replace="~{layouts/home-page-layout :: homepage-page-fragment(
+                                                ~{::title},
+                                                ~{:: #home-header},
+                                                ~{:: #home-nav},
+                                                ~{:: #home-page-content},
+                                                ~{:: #home-footer}
+                                               )}">
 
 <head>
-<title>Online</title>
+<title>Squnga Homepage</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-<!-- <link rel="stylesheet" type="text/css" media="all" -->
-<!-- 	href="/gtvg/css/gtvg.css" /> -->
 </head>
 <body>
-
 	<h1>Squnga Web App Online ....</h1>
 	<p>My first paragraph.</p>
+
+	<div id="home-header">
+		Header of Home Page
+	</div>
+	<div id="home-nav" th:replace="~{fragraments/home-page-fragment :: nav-default}">
+		Home Nav
+	</div>
+	<div id="home-main-content">
+		<h2>Home content</h2>
+		<div>Content of Home Page</div>
+	</div>
+	<div id="home-footer" th:replace="~{fragraments/home-page-fragment :: copyright}">
+		Footer
+	</div>
 
 </body>
 </html>

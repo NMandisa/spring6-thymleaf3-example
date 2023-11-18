@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="homepage-page-fragment (title, header, nav, page-content, footer)"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title th:replace="${title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{../../resources/theme/css/bootstrap/bootstrap.min.css}"
+          href="../../resources/theme/css/bootstrap/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="${header} ?: ~{}">
+<!--    Header here-->
+</header>
+<section>
+    <nav th:insert="${nav} ?: ~{}">
+        <!--Navigation here-->
+    </nav>
+</section>
+<div layout:fragment="page-content">
+    <!-- Page content -->
+</div>
+</body>
+<footer th:insert="${footer} ?: ~{}">
+    <!--Footer here -->
+</footer>
+</html>

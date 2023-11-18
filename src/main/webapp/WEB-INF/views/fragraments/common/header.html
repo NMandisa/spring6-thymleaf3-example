@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<header th:fragment="header" class="global-header">
+    <!--    Logged in show the user's avatar-->
+    <div class="profile bulge-icon"  sec:authorize="isAuthenticated()">
+        <button class="profile-btn" id="profile-btn" th:onclick="dropdown()">
+            <img class="img" alt="user profile picture"  th:src="@{}"/>
+        </button>
+
+        <div id = "dropdown-menu">
+            <form th:action="@{/logout}" method="post">
+                <button type = "submit" class="sign out bulge-icon" aria-label="sign out">Sign Out</button>
+            </form>
+        </div>
+    </div>
+</header>
+</html>
