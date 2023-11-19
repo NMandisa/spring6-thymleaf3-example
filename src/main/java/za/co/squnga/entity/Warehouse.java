@@ -1,8 +1,7 @@
 package za.co.squnga.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
 
 /**
@@ -16,8 +15,9 @@ import java.io.Serializable;
 @Table(name = "warehouse")
 public class Warehouse implements Serializable{
 
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="warehouse_id")
     private Long warehouseId;
 
