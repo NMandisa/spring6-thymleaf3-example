@@ -18,6 +18,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
         <spring.version>6.0.10</spring.version>
+        <hibernate.version>5.5.9.Final</hibernate.version>
         <spring-security.version>6.1.5</spring-security.version>
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
         <slf4j.version>2.0.7</slf4j.version>
@@ -111,6 +112,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -138,20 +146,26 @@
             </exclusions>
         </dependency>
 
+        <!--START SPRING ORM Hibernate Connection Pooling Dependencies-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <!-- Exclude Commons Logging in favor of SLF4j -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>6.1.0</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-hikaricp -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!--END SPRING ORM Hibernate Connection Pooling Dependencies-->
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
@@ -160,7 +174,6 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
 
         <!--Start Jakarta Dependency -->
         <dependency>
@@ -177,7 +190,6 @@
             <artifactId>thymeleaf-spring6</artifactId>
             <version>${thymeleaf.version}</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -185,7 +197,6 @@
             <version>3.3.0</version>
         </dependency>
         <!--End Thymeleaf Dependency -->
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
