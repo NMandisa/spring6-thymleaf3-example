@@ -9,10 +9,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import za.co.squnga.dto.ErrorResponseDTO;
 
 import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
 @ControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private final static Logger LOGGER = Logger.getLogger(CustomizedResponseEntityExceptionHandler.class.getName());
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponseDTO> handleAllExceptions(Exception ex, WebRequest request){
         ErrorResponseDTO error = new ErrorResponseDTO(LocalDateTime.now(),

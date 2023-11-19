@@ -1,13 +1,25 @@
 package za.co.squnga;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import za.co.squnga.utils.SpringUtil;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @author Noxolo.Mkhungo
  *
  */
-public class App 
+public class App
 {
+    private final static Logger LOGGER = Logger.getLogger(App.class.getName());
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
+        LOGGER.log(Level.INFO,"Initializing Spring context.", App.class);
+        SpringUtil springUtil =new SpringUtil();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/application-context.xml");
+        springUtil.setApplicationContext(applicationContext);
     }
 }

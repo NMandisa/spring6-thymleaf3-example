@@ -1,8 +1,7 @@
 package za.co.squnga.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import java.util.logging.Logger;
 
 /**
  * @author Noxolo.Mkhungo
@@ -10,6 +9,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class HomepageService {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(HomepageService.class);
+    private final static java.util.logging.Logger LOGGER = Logger.getLogger(HomepageService.class.getName());
 }
