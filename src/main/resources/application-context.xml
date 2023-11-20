@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ~ Copyright (c) 2023. ~ Author : Noxolo.Mkhungo | +27(0)71 741 6469 -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -16,7 +15,6 @@
     <context:property-placeholder location="classpath:./application.properties"/>
     <!--    <context:property-placeholder location="classpath:/log4j.properties" />-->
 
-    <context:component-scan base-package="za.co.squnga"/>
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
     </bean>
@@ -54,6 +52,11 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
+    <bean name="warehouseFacade" class="za.co.squnga.facade.WarehouseFacade" >
+
+    </bean>
+
 
      <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
      </bean>-->

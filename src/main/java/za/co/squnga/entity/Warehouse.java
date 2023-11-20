@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "warehouse")
 public class Warehouse implements Serializable{
@@ -23,6 +24,5 @@ public class Warehouse implements Serializable{
 
     @Column(name = "stock_id")
     protected Long stockId;
-
 
 }
