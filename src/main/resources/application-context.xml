@@ -13,23 +13,23 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:/application.properties"/>
+    <context:property-placeholder location="classpath:./application.properties"/>
     <!--    <context:property-placeholder location="classpath:/log4j.properties" />-->
 
-    <!--<context:component-scan base-package="za.co.squnga"/>-->
+    <context:component-scan base-package="za.co.squnga"/>
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
     </bean>
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="poolName" value="springHikariCP" />
-        <property name="connectionTestQuery" value="SELECT 1" />
-        <property name="dataSourceClassName" value="com.mysql.cj.jdbc.MysqlDataSource" />
+        <property name="poolName" value="${hikari.config.poolName}" />
+        <property name="connectionTestQuery" value="${hikari.config.connectionTestQuery}" />
+        <property name="dataSourceClassName" value="${hikari.config.dataSourceClassName}" />
         <property name="dataSourceProperties">
             <props>
-                <prop key="url">jdbc:mysql://localhost:3306/hellodb</prop>
-                <prop key="user">root</prop>
-                <prop key="password">root</prop>
+                <prop key="url">${hikari.config.dataSource.url}</prop>
+                <prop key="user">${hikari.config.dataSource.user}</prop>
+                <prop key="password">${hikari.config.dataSource.password}</prop>
             </props>
         </property>
     </bean>
@@ -39,14 +39,14 @@
         <property name="packagesToScan" value="za.co.squnga.entity" />
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.id.new_generator_mapping">true</prop>
-                <prop key="hibernate.hikari.dataSource.minimumIdle">5</prop>
-                <prop key="hibernate.hikari.dataSource.maximumPoolSize">20</prop>
-                <prop key="hibernate.hikari.dataSource.idleTimeout">30000</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.id.new_generator_mapping">${hibernate.id.new_generator_mapping}</prop>
+                <prop key="hibernate.hikari.dataSource.minimumIdle">${hibernate.hikari.dataSource.minimumIdle}</prop>
+                <prop key="hibernate.hikari.dataSource.maximumPoolSize">${hibernate.hikari.dataSource.maximumPoolSize}</prop>
+                <prop key="hibernate.hikari.dataSource.idleTimeout">${hibernate.hikari.dataSource.idleTimeout}</prop>
             </props>
         </property>
     </bean>
