@@ -12,24 +12,25 @@
                                                )}">
 
 <head>
-<title>Squnga Homepage</title>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>Home | Squnga </title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="Noxolo.Mkhungo" />
 </head>
 <body>
-	<div id="home-header">
-		<h1>Homepage Squnga Web App Online ....</h1>
-		<p>My first paragraph.</p>
-	</div>
-	<div id="home-nav" th:replace="~{fragraments/home-page-fragment :: nav-default}">
-		<!--Home Nav-->
-	</div>
-	<div id="home-main-content">
-		<h2>Home content</h2>
-		<div>Content of Home Page</div>
+
+	<nav id="home-nav" th:replace="~{fragraments/home-page-fragment :: nav-default}">
+		<!--Nav-->
+	</nav>
+	<header id="home-header" th:replace="~{fragraments/home-page-fragment :: home-header}" >
+		<!--Header-->
+	</header>
+	<div id="home-main-content" th:replace="~{fragraments/home-page-fragment :: homepage-main-content}">
+		<!--homepage main content-->
 	</div>
 	<div id="home-footer" th:replace="~{fragraments/home-page-fragment :: copyright}">
 		<!--Footer-->
 	</div>
-
 </body>
 </html>

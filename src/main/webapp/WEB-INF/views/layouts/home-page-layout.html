@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      th:fragment="homepage-page-fragment (title, header, nav, page-content, footer)"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:fragment="homepage-page-fragment (title, header, nav, pagecontent, footer)"
       lang="en">
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title th:replace="${title}"></title>
-    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/resources/theme/css/main.css}" href="/resources/theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{resources/theme/css/bootstrap/bootstrap.min.css}" />
+    <!--https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css-->
+    <script th:src="@{/resources/theme/js/bootstrap/bootstrap.js}"></script>
+    <!--https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"-->
 </head>
 <body>
-<header th:insert="${header} ?: ~{}" class="">
-<!--    Header here-->
-</header>
-<section>
-    <nav th:insert="${nav} ?: ~{}" >
-        <!--Navigation here-->
-    </nav>
-</section>
-<div layout:fragment="page-content">
-    <!-- Page content -->
-</div>
+<nav th:insert="${nav} ?: ~{}" class="navbar navbar-expand-lg navbar-light bg-light"><!--Navigation here--></nav>
+<header th:insert="${header} ?: ~{}" class="bg-dark py-5"><!--    Header here--></header>
+
+<div th:insert="${pagecontent} ?: ~{}" ><!-- Page content --></div>
+<footer th:insert="${footer} ?: ~{}" class="py-5 bg-dark"><!--Footer here --></footer>
 </body>
-<footer th:insert="${footer} ?: ~{}">
-    <!--Footer here -->
-</footer>
 </html>

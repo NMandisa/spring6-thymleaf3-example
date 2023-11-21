@@ -8,6 +8,7 @@ import java.util.logging.Logger;
  *
  */
 @Service
-public class HomepageService {
-    private final static java.util.logging.Logger LOGGER = Logger.getLogger(HomepageService.class.getName());
+public class HomePageService {
+    private final static Logger LOGGER = Logger.getLogger(HomePageService.class.getName());
+
 }
