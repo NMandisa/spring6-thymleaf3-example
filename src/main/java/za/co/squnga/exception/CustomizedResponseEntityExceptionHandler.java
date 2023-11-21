@@ -19,7 +19,21 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     public final ResponseEntity<ErrorResponseDTO> handleAllExceptions(Exception ex, WebRequest request){
         ErrorResponseDTO error = new ErrorResponseDTO(LocalDateTime.now(),
                 ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);//500
+    }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public final ResponseEntity<ErrorResponseDTO> handleProductNotFoundException(Exception ex, WebRequest request) throws Exception {
+        ErrorResponseDTO errorDetails = new ErrorResponseDTO(LocalDateTime.now(),
+                ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);//404
+    }
+
+    @ExceptionHandler(ProductAlreadyExistsException.class)
+    public final ResponseEntity<ErrorResponseDTO> handleProductAlreadyExistsException(Exception ex, WebRequest request) throws Exception {
+        ErrorResponseDTO errorDetails = new ErrorResponseDTO(LocalDateTime.now(),
+                ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
+
     }
 
 }
