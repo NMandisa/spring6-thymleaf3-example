@@ -23,9 +23,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth-> {
             auth.requestMatchers(("/")).anonymous().anyRequest().authenticated();
+            auth.requestMatchers(("/favicon.ico")).permitAll();
             auth.anyRequest().authenticated();
         });
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
       /*  http.csrf(csrf ->csrf.disable())
                 .authorizeRequests().requestMatchers("/").anonymous().anyRequest().authenticated();*/
 
