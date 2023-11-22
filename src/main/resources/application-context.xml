@@ -53,10 +53,6 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <bean name="homePageFacade" class="za.co.squnga.facade.HomPageFacade" >
-
-    </bean>
-
 
      <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
      </bean>-->
