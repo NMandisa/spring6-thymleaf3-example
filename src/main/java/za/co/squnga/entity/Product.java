@@ -54,7 +54,7 @@ import java.time.LocalDateTime;
 )
 @Table(
         name = "products",
-        schema = "ecommerce",
+        schema = "hellodb",
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "sku_unique",

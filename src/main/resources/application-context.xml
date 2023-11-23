@@ -2,6 +2,7 @@
 <!-- ~ Copyright (c) 2023. ~ Author : Noxolo.Mkhungo | +27(0)71 741 6469 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -9,11 +10,17 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/data/jpa
+    https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:./application.properties"/>
     <!--    <context:property-placeholder location="classpath:/log4j.properties" />-->
+    <context:component-scan base-package="za.co.squnga.repository">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
+    <!--<jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>-->
 
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
@@ -23,6 +30,9 @@
         <property name="poolName" value="${hikari.config.poolName}" />
         <property name="connectionTestQuery" value="${hikari.config.connectionTestQuery}" />
         <property name="dataSourceClassName" value="${hikari.config.dataSourceClassName}" />
+        <property name="autoCommit" value="true"/>
+        <!--<property name="transactionIsolation" value=""/>
+        <property name="threadFactory" value="" />-->
         <property name="dataSourceProperties">
             <props>
                 <prop key="url">${hikari.config.dataSource.url}</prop>
@@ -52,6 +62,29 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
+
+
+    <!--<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+    </bean>-->
+
+    <!--<bean id="LocalEntityManagerFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        &lt;!&ndash;<property name="jpaDialect" value="${hibernate.dialect}"/>&ndash;&gt;
+&lt;!&ndash;        <property name="entityManagerInterface" ref=""&ndash;&gt;
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="jpa.open-in-view">false</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <!--<bean id="platformTransactionManager" class="org.springframework.transaction.PlatformTransactionManager">
+
+    </bean>-->
+
 
 
      <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

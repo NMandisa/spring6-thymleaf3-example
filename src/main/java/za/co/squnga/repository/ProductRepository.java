@@ -11,8 +11,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-@Repository
-@ComponentScan("za.co.squnga.repository")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     /**

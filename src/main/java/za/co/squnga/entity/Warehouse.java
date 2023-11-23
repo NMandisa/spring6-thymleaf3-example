@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "warehouse")
+@Table(name = "warehouse" ,schema = "hellodb")
 public class Warehouse implements Serializable{
 
 

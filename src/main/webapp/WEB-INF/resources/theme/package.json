@@ -1,0 +1,22 @@
+{
+  "name": "squnga-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Noxolo.Mkhungo",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "natives": "^1.1.6",
+    "node-fetch": "^2.7.0"
+  }
+}
