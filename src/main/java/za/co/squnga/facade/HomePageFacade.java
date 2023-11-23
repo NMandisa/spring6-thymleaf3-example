@@ -2,8 +2,6 @@ package za.co.squnga.facade;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.squnga.entity.Product;
@@ -24,14 +22,14 @@ public class HomePageFacade {
     private ProductRepository productRepository;
     private WarehouseRepository warehouseRepository;
 
-    @Autowired
-    @Qualifier("warehouseRepository")
+    /*@Autowired
+    @Qualifier("warehouseRepository")*/
     public void setWarehouseRepository(WarehouseRepository warehouseRepository) {
         this.warehouseRepository =  warehouseRepository;
     }
 
-    @Autowired
-    @Qualifier("productRepository")
+    /*@Autowired
+    @Qualifier("productRepository")*/
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }

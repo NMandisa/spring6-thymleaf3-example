@@ -21,13 +21,8 @@
 	<mvc:resources mapping="/js/jquery/" location="WEB-INF/resources/theme/js/jquery/" cache-period="31556926" />
 	
 	<context:component-scan  base-package="za.co.squnga" />
-	
 	<mvc:annotation-driven />
-
-
-
-	<bean id="templateResolver"
-		class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
+	<bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
 		<!--<property name="prefix" value="/WEB-INF/views/thymeleaf/" />-->
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".html" />
@@ -35,8 +30,7 @@
 		<property name="cacheable" value="true" />
 	</bean>
 
-	<bean id="templateEngine"
-		class="org.thymeleaf.spring6.SpringTemplateEngine">
+	<bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
 		<property name="enableSpringELCompiler" value="true" />
 	</bean>
@@ -49,8 +43,7 @@
 	</bean>
 
 	<!-- Message bundle -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="/WEB-INF/messages/**.properties" />
 	</bean>
 
