@@ -40,7 +40,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
 
     }
-    @ExceptionHandler(Exception.class)
+   /* @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) ->{
@@ -49,6 +49,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
             errors.put(fieldName, message);
         });
         return new ResponseEntity<Object>(errors, HttpStatus.BAD_REQUEST);//400
-    }
+    }*/
 
 }

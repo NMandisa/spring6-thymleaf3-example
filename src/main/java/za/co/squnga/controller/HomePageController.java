@@ -1,34 +1,20 @@
 package za.co.squnga.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import za.co.squnga.entity.Product;
-import za.co.squnga.service.HomePageService;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author Noxolo.Mkhungo
- *
  */
 @Controller
 public class HomePageController {
     private final static Logger LOGGER = Logger.getLogger(HomePageController.class.getName());
-
-    private HomePageService homePageService;
-    @Autowired
-    @Qualifier("homePageService")
-    public void setHomePageServuce (HomePageService homePageService){
-        this.homePageService=homePageService;
-    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index (HttpServletRequest httpRequest){
@@ -37,15 +23,6 @@ public class HomePageController {
         modelAndView.addObject("message", "You're in Home Page Controller");
         LOGGER.log(Level.INFO,"You're in Home Page Controller",HomePageController.class);
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/products/", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> getProducts (HttpServletRequest httpRequest){
-        // Page <Product> productPage = //services findAll
-        //HttpHeaders headers = //PaginationUtils - pagination header (page, "/products/"
-        //return new ResponseEntity<>(productPage.getContent,headers, httpStatus-OK
-
-        return null;
     }
 
 }

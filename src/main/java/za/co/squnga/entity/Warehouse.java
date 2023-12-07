@@ -14,15 +14,15 @@ import java.io.Serializable;
 @ToString
 @Entity
 @Table(name = "warehouse" ,schema = "hellodb")
-public class Warehouse implements Serializable{
+public class Warehouse{
 
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="warehouse_id")
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY) @Column(name="warehouse_id")
     private Long warehouseId;
+    @Column(name = "stock_id") private Long stockId;
+    @Column(name="warehouse_name") private String warehouseName;
 
-    @Column(name = "stock_id")
-    protected Long stockId;
-
+    public Warehouse(String warehouseName){
+        super();
+        this.warehouseName=warehouseName;
+    }
 }

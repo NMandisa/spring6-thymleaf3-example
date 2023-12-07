@@ -1,11 +1,12 @@
-package za.co.squnga.ws.controller;
+package za.co.squnga.controller.ws;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import za.co.squnga.service.HomePageService;
+import za.co.squnga.controller.ProductController;
+import za.co.squnga.service.ProductService;
+import za.co.squnga.service.impl.DefaultProductService;
 
 import java.util.logging.Logger;
 
@@ -15,12 +16,12 @@ import java.util.logging.Logger;
 @CrossOrigin(allowedHeaders = {"*"}, origins = "*")
 @RestController
 @RequestMapping("api/products/")
-public class ProductController {
+public class ProductRestController {
+
     private final static Logger LOGGER = Logger.getLogger(ProductController.class.getName());
-    private HomePageService homePageService;
+    private ProductService productService;
     @Autowired
-    @Qualifier("homePageService")
-    public void setHomePageServuce (HomePageService homePageService){
-        this.homePageService=homePageService;
+    public ProductService productService (){
+        return this.productService=new DefaultProductService();
     }
 }
