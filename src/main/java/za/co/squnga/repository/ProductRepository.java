@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-@NoRepositoryBean
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     /**

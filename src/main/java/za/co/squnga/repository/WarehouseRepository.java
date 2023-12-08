@@ -6,7 +6,7 @@ import za.co.squnga.entity.Warehouse;
 /**
  * @author Noxolo.Mkhungo
  */
-@Repository
+
 public interface WarehouseRepository extends JpaRepository<Warehouse,Long> {
 
 }
