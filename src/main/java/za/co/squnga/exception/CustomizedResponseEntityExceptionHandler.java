@@ -40,12 +40,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
 
     }
-    @ExceptionHandler(ProductRepositoryNullException.class)
-    public final ResponseEntity<ErrorResponseDTO> handleProductRepositoryNullException(Exception ex, WebRequest request) {
-        ErrorResponseDTO errorDetails = new ErrorResponseDTO(LocalDateTime.now(),
-                ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);//500
-    }
    /* @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
