@@ -21,11 +21,12 @@ public class SecurityConfiguration {
     private final static java.util.logging.Logger LOGGER = Logger.getLogger(SecurityConfiguration.class.getName());
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth-> {
+        http.csrf(
+                csrf -> csrf.disable())
+                .authorizeHttpRequests(auth-> {
             auth.requestMatchers(("/")).anonymous().anyRequest().authenticated();
-            auth.requestMatchers(("/favicon.ico")).permitAll();
-            auth.anyRequest().authenticated();
-        });
+            auth.requestMatchers("/favicon.ico","/error/").anonymous().anyRequest().permitAll();
+                });
       /*  http.csrf(csrf ->csrf.disable())
                 .authorizeRequests().requestMatchers("/").anonymous().anyRequest().authenticated();*/
 
