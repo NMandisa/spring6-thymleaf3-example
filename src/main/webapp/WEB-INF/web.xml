@@ -33,33 +33,33 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<error-page>
-        <location>/WEB-INF/error.html</location>
-    </error-page>-->
+    <error-page>
+        <location>/WEB-INF/errors</location>
+    </error-page>
     <error-page>
         <!-- Missing login -->
         <error-code>401</error-code>
-        <location>/WEB-INF/error/401.html</location>
+        <location>/WEB-INF/errors/401.html</location>
     </error-page>
     <error-page>
         <!-- Forbidden directory listing -->
         <error-code>403</error-code>
-        <location>/WEB-INF/error/403.html</location>
+        <location>/WEB-INF/errors/403.html</location>
     </error-page>
     <error-page>
         <!-- Missing resource -->
         <error-code>404</error-code>
-        <location>/WEB-INF/error/404.html</location>
+        <location>/WEB-INF/errors/404.html</location>
     </error-page>
     <error-page>
         <!-- Uncaught exception -->
         <error-code>500</error-code>
-        <location>/WEB-INF/error/500.html</location>
+        <location>/WEB-INF/errors/500.html</location>
     </error-page>
     <error-page>
         <!-- Unsupported servlet method -->
         <error-code>503</error-code>
-        <location>/WEB-INF/error/503.html</location>
+        <location>/WEB-INF/errors/503.html</location>
     </error-page>
 
 
