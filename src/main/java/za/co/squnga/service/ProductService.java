@@ -1,5 +1,6 @@
 package za.co.squnga.service;
 
+import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface ProductService {
 
-    List<Product> ProductList();
+    List<ProductDTO> ProductList();
 }
