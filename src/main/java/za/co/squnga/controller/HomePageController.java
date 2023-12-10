@@ -17,7 +17,6 @@ public class HomePageController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index (HttpServletRequest httpRequest){
         ModelAndView modelAndView = new ModelAndView("index");
-        LOGGER.info("Home Page Controller ------>>>>>>>>> ");
         modelAndView.addObject("message", "You're in Home Page Controller");
         LOGGER.info("You're in Home Page Controller");
         return modelAndView;

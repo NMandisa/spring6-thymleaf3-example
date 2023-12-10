@@ -20,7 +20,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>
     <jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>
-   <!-- <tx:annotation-driven />-->
+    <tx:annotation-driven />
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
     </bean>
@@ -63,7 +63,7 @@
     </bean>
 
      <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-         <property name="basename" value="classpath:/messages/**.properties"/>
+         <property name="basename" value="messages.messages"/>
          <property name="defaultEncoding" value="UTF-8"/>
      </bean>
 
