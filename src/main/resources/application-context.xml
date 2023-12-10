@@ -20,7 +20,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>
     <jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>
-    <tx:annotation-driven />
+   <!-- <tx:annotation-driven />-->
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
     </bean>
@@ -63,6 +63,21 @@
     </bean>
 
      <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-         <property name="basename" value="classpath:/messages/**.properties" />
+         <property name="basename" value="classpath:/messages/**.properties"/>
+         <property name="defaultEncoding" value="UTF-8"/>
      </bean>
+
+    <!--https://stackoverflow.com/questions/57093867/java-how-to-configure-log4j2-xml-->
+    <bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.apache.logging.log4j.core.LoggerContext" />
+        <property name="targetMethod" value="getContext" />
+        <property name="arguments" value="false"/>
+    </bean>
+
+    <bean id="log4jContext" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="log4jInitialization"/>
+        <property name="targetMethod" value="setConfigLocation"/>
+        <property name="arguments" value="classpath:./log4j2.properties"/>
+    </bean>
+
 </beans>

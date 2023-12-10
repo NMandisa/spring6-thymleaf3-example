@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import za.co.squnga.service.WarehouseService;
 import za.co.squnga.service.impl.DefaultWarehouseService;
 
+import java.util.logging.Logger;
+
 /**
  * @author Noxolo.Mkhungo
  */
@@ -14,6 +16,8 @@ import za.co.squnga.service.impl.DefaultWarehouseService;
 @RestController
 @RequestMapping("api/warehouses/")
 public class WarehouseRestController {
+
+    private static final Logger LOGGER = Logger.getLogger(WarehouseRestController.class.getName());
     private WarehouseService warehouseService;
     @Autowired
     public  WarehouseService warehouseService (){
