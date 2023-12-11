@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 @CrossOrigin(allowedHeaders = {"*"}, origins = "*")
 @RestController
-@RequestMapping(WebRestURIConstants.PRODUCTS_REST_MAPPING)
+//@RequestMapping(WebRestURIConstants.PRODUCTS_REST_MAPPING)
 public class ProductRestController {
     private static final Logger LOGGER = Logger.getLogger(ProductRestController.class.getName());
     private ProductService productService;
