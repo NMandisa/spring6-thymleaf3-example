@@ -16,9 +16,6 @@ public class ProductRepositoryNullException extends RuntimeException {
     public  ProductRepositoryNullException(){
         super();
     }
-    public  ProductRepositoryNullException(String message, Throwable cause){
-        super(message, cause);
-    }
     public  ProductRepositoryNullException(String message){
         super(message);
         LOGGER.log(Level.SEVERE,message);

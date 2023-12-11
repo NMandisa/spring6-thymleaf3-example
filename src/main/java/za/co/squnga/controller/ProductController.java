@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public ModelAndView index (HttpServletRequest httpRequest){
+    public ModelAndView plp (HttpServletRequest httpRequest){
         ModelAndView modelAndView = new ModelAndView("product-listing-page");
         LOGGER.info("------>>>>>>>>> ",HomePageController.class.getName());
         modelAndView.addObject("message", "You're in Product Page Controller");

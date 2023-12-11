@@ -1,14 +1,13 @@
 package za.co.squnga.service;
 
 import za.co.squnga.dto.ProductDTO;
-import za.co.squnga.entity.Product;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author Noxolo.Mkhungo
  */
 public interface ProductService {
 
-    List<ProductDTO> ProductList();
+    Collection<?> ProductList();
 }

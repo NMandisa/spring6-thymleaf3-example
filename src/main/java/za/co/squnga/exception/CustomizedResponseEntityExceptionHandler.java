@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 
 @ControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-
     private final static Logger LOGGER = Logger.getLogger(CustomizedResponseEntityExceptionHandler.class.getName());
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponseDTO> handleAllExceptions(Exception ex, WebRequest request){

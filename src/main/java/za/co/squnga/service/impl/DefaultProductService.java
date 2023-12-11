@@ -7,7 +7,7 @@ import za.co.squnga.facade.ProductFacade;
 import za.co.squnga.facade.impl.DefaultProductFacade;
 import za.co.squnga.service.ProductService;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author Noxolo.Mkhungo
@@ -21,7 +21,7 @@ public class DefaultProductService implements ProductService {
        return productFacade ;
     }
     @Override
-    public List<ProductDTO> ProductList() {
+    public Collection<?> ProductList() {
         return productFacade.getAllProducts();
     }
 }
