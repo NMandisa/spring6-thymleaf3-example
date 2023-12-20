@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
  * @author Noxolo.Mkhungo
  */
 
-@Component
-public class HomePageFacade {
-    private static final Logger LOGGER  = LoggerFactory.getLogger(HomePageFacade.class.getName());
+public interface HomePageFacade {
+
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolv
 import za.co.squnga.dto.ErrorResponseDTO;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 /**
@@ -19,11 +20,8 @@ import java.util.logging.Logger;
 public class CustomizedDefaultHandlerExceptionResolver extends DefaultHandlerExceptionResolver {
     private final static Logger LOGGER = Logger.getLogger(CustomizedDefaultHandlerExceptionResolver.class.getName());
     @ExceptionHandler(ProductRepositoryNullException.class)
-    public final ResponseEntity<ErrorResponseDTO> handleProductRepositoryNullException(Exception ex, WebRequest request) {
+    public final ResponseEntity<Collection<?>> handleProductRepositoryNullException(Exception ex, WebRequest request) {
         ErrorResponseDTO errorDetails = new ErrorResponseDTO(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("errorDetails",errorDetails);
-        modelAndView.setViewName("500");
-        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);//500
+        return new ResponseEntity(errorDetails,null, HttpStatus.INTERNAL_SERVER_ERROR);//500
     }
 }

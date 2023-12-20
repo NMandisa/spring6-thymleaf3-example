@@ -16,6 +16,8 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:property-placeholder location="classpath:./application.properties"/>
+    <context:annotation-config />
+    <context:component-scan base-package="za.co.squnga.facade, za.co.squnga.service"/>
     <context:component-scan base-package="za.co.squnga.repository">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>

@@ -1,10 +1,7 @@
 package za.co.squnga.exception;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -12,8 +9,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import za.co.squnga.dto.ErrorResponseDTO;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 @ControllerAdvice
@@ -37,8 +32,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         ErrorResponseDTO errorDetails = new ErrorResponseDTO(LocalDateTime.now(),
                 ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
-
     }
+
    /* @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errors = new HashMap<>();

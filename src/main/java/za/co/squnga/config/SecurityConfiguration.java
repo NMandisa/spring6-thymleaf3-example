@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import za.co.squnga.repository.ProductRepository;
+
 import java.util.logging.Logger;
 
 /**
@@ -20,6 +22,8 @@ import java.util.logging.Logger;
 public class SecurityConfiguration {
 
     private final static java.util.logging.Logger LOGGER = Logger.getLogger(SecurityConfiguration.class.getName());
+
+    private ProductRepository productRepository;
     @Bean //we'll work on the security later
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         /*http.csrf(
@@ -32,5 +36,8 @@ public class SecurityConfiguration {
                 .authorizeRequests().requestMatchers("/").anonymous().anyRequest().authenticated();*/
         return http.build();
     }
-
+    /*@Bean
+    public ProductRepository ProductRepository(ProductRepository ProductRepository){
+        return this.productRepository=ProductRepository ;
+    }*/
 }

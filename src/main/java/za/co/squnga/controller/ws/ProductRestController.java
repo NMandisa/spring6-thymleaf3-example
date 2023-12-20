@@ -2,6 +2,7 @@ package za.co.squnga.controller.ws;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,11 +11,9 @@ import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.*;
 import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.service.ProductService;
-import za.co.squnga.service.impl.DefaultProductService;
 import za.co.squnga.web.WebRestURIConstants;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -27,9 +26,8 @@ public class ProductRestController {
     private static final Logger LOGGER = Logger.getLogger(ProductRestController.class.getName());
     private ProductService productService;
     @Autowired
-    public ProductService productService (){
-        return productService=new DefaultProductService();
-    }
+    public ProductService productService (@Qualifier("defaultProductService") ProductService productService)
+    {return this.productService=productService;}
     @RequestMapping(
             value = WebRestURIConstants.GET_ALL_PRODUCTS,
             method = RequestMethod.GET,
@@ -40,7 +38,8 @@ public class ProductRestController {
         // Page <Product> productPage = //services findAll
         HttpHeaders headers = new HttpHeaders();//PaginationUtils - pagination header (page, "/products/");
         //return new ResponseEntity<>(productPage.getContent,headers, httpStatus-OK
-        return new ResponseEntity<>(productService.ProductList(),headers,HttpStatus.ACCEPTED);
+        if(productService.ProductList()==null) return new ResponseEntity<>(null,null,HttpStatus.FAILED_DEPENDENCY);
+        else return new ResponseEntity<>(productService.ProductList(),null,HttpStatus.ACCEPTED);
     }
 
     @PostMapping(value = WebRestURIConstants.CREATE_PRODUCT, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
