@@ -1,4 +1,4 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.basket;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

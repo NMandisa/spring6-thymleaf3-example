@@ -1,8 +1,6 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.catalog;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 import java.util.Collection;
 
@@ -11,7 +9,6 @@ import java.util.Collection;
  */
 @MappedSuperclass
 public abstract class BaseCatalog {
-
     @Id
     @GeneratedValue
     private int id;

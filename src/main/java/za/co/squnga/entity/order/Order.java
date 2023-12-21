@@ -1,4 +1,4 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.order;
 
 import jakarta.persistence.*;
 
@@ -8,6 +8,7 @@ import java.util.Collection;
  * @author Noxolo.Mkhungo
  */
 @Entity
+@Table(name = "order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")

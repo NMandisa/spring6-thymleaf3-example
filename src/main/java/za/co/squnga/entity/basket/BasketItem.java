@@ -1,13 +1,12 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.basket;
 
 import jakarta.persistence.*;
-
-import java.util.Collection;
 
 /**
  * @author Noxolo.Mkhungo
  */
 @Entity
+@Table(name = "basket_item")
 public class BasketItem {
 
     @Id

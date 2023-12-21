@@ -1,4 +1,4 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.catalog;
 
 import jakarta.persistence.*;
 
@@ -6,6 +6,7 @@ import jakarta.persistence.*;
  * @author Noxolo.Mkhungo
  */
 @Entity
+@Table(name = "catalog_item")
 public class CatalogItem {
 
     @Id

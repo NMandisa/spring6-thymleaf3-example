@@ -1,14 +1,13 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.catalog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.*;
 import java.util.Collection;
 
 /**
  * @author Noxolo.Mkhungo
  */
 @Entity
+@Table(name = "catalog")
 public class Catalog extends BaseCatalog{
     @OneToMany
     private Collection<CatalogItem> catalogItems;
