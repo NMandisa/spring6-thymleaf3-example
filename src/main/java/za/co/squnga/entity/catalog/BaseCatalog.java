@@ -10,7 +10,8 @@ import java.util.Collection;
 @MappedSuperclass
 public abstract class BaseCatalog {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "catalog_generator")
+    @SequenceGenerator(name = "catalog_generator", sequenceName = "catalog_sequence_name", allocationSize = 1)
+    private Long id;
     public abstract Collection<? extends CatalogItem> getCatalogItems();
 }

@@ -1,9 +1,10 @@
 package za.co.squnga.entity.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import za.co.squnga.entity.basket.BasketItem;
 
 import java.util.Collection;
@@ -11,12 +12,18 @@ import java.util.Collection;
 /**
  * @author Noxolo.Mkhungo
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 @Entity
 @Table(name = "base_product")
 public class BaseProduct extends AbstractProduct {
     @OneToOne
+    @JoinTable(name = "product_has_product_detail")
     private ProductDetail productDetail;
     @OneToMany
+    @JoinTable(name = "product_has_product_images")
     private Collection<ProductImage>  productImages;
     @Override
     public ProductDetail getProductDetail() {

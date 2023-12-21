@@ -1,10 +1,18 @@
 package za.co.squnga.entity.catalog;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author Noxolo.Mkhungo
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 @Entity
 @Table(name = "catalog_item")
 public class CatalogItem {
