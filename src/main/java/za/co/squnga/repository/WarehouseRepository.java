@@ -8,8 +8,8 @@ import za.co.squnga.entity.Warehouse;
 /**
  * @author Noxolo.Mkhungo
  */
-@Repository
-@NoRepositoryBean
+/*@Repository
+@NoRepositoryBean*/
 public interface WarehouseRepository extends JpaRepository<Warehouse,Long> {
 
 }

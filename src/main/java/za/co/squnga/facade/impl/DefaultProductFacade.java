@@ -1,9 +1,12 @@
 package za.co.squnga.facade.impl;
 
 import jakarta.inject.Inject;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Component;
 import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
@@ -22,12 +25,14 @@ import java.util.logging.Logger;
  */
 @Component
 @Scope("singleton")
+@PropertySource("classpath:/messages/messages.properties")
 public class DefaultProductFacade implements ProductFacade {
     private static final Logger LOGGER = Logger.getLogger(ProductFacade.class.getName());
-    private ProductRepository productRepository;
-    @Inject
-    public ProductRepository productRepository(@Qualifier("productRepository") ProductRepository productRepository)
-    {return this.productRepository=productRepository;}
+    private @NonNull ProductRepository productRepository;
+     @Autowired
+     @Qualifier("productRepository")
+     public ProductRepository productRepository()
+     {return productRepository;}
     public Collection<?> getAllProducts(){
         LOGGER.info("Get All Products");
         if(productRepository == null){

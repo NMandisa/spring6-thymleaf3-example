@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @NoRepositoryBean
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
