@@ -18,6 +18,6 @@ import lombok.ToString;
 public class BasketItem {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "basket_item_generator")
-    @SequenceGenerator(name = "basket_item_generator", sequenceName = "basket_item_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "basket_item_generator", sequenceName = "sequence_basket_item_id", allocationSize = 1)
     private Long id;
 }

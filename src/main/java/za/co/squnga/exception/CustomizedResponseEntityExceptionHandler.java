@@ -16,12 +16,12 @@ import java.util.Collection;
 @RestControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomizedResponseEntityExceptionHandler.class.getName());
-    @ExceptionHandler(Exception.class)
+    /*@ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, WebRequest request){
         ErrorResponse error = new ErrorResponse(LocalDateTime.now(),
                 ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);//500
-    }
+    }*/
     @ExceptionHandler(ProductNotFoundException.class)
     public final ResponseEntity<ErrorResponse> handleProductNotFoundException(Exception ex, WebRequest request){
         ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now(),
@@ -35,11 +35,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                 ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
     }
-    @ExceptionHandler(ProductRepositoryNullException.class)
-    public final ResponseEntity<Collection<?>> handleProductRepositoryNullException(Exception ex, WebRequest request) {
-        ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity(errorDetails,null, HttpStatus.INTERNAL_SERVER_ERROR);//500
-    }
+
 
    /* @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {

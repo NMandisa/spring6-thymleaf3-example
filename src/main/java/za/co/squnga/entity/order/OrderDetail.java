@@ -18,6 +18,6 @@ import lombok.ToString;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_detail_generator")
-    @SequenceGenerator(name = "order_detail_generator", sequenceName = "order_detail_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "order_detail_generator", sequenceName = "sequence_order_detail_id", allocationSize = 1)
     private Long id;
 }

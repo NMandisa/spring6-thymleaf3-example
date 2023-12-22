@@ -18,7 +18,7 @@ import java.util.Collection;
 public class Stock implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stock_generator")
-    @SequenceGenerator(name = "stock_generator", sequenceName = "stock_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "stock_generator", sequenceName = "sequence_stock_id", allocationSize = 1)
     private Long id;
     @OneToMany
     @JoinTable(name = "stock_belongs_to_inventory")

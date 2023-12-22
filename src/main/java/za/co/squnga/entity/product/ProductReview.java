@@ -15,10 +15,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "product_review")
-public class ProductRating {
+public class ProductReview {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_review_generator")
-    @SequenceGenerator(name = "product_review_generator", sequenceName = "product_review_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "product_review_generator", sequenceName = "sequence_product_review_id", allocationSize = 1)
     private Long id;
     @Column(name = "product_rating")
     private int productRating;

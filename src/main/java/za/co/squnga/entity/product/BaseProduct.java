@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import za.co.squnga.entity.basket.BasketItem;
 
 import java.util.Collection;
 
@@ -28,13 +27,12 @@ public class BaseProduct extends AbstractProduct {
     @JoinTable(name = "product_has_product_images")
     private Collection<ProductImage>  productImages;
     @OneToMany
-    @JoinTable(name = "product_has_product_views")
-    private Collection<ProductRating> productRatings;
+    @JoinTable(name = "product_has_product_reviews")
+    private Collection<ProductReview> productReviews;
     @Override
-    public Collection<? extends ProductRating> getProductRatings() {
-        return productRatings;
+    public Collection<? extends ProductReview> getProductRatings() {
+        return productReviews;
     }
-
     @Override
     public ProductDetail getProductDetail() {
         return productDetail;

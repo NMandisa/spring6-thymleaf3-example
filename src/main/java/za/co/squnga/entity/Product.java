@@ -72,7 +72,7 @@ public class Product {
 
     @SequenceGenerator(
             name = "product_generator",
-            sequenceName = "product_sequence_name",
+            sequenceName = "sequence_product_sequence_name",
             allocationSize = 1
     )
     private Long id;

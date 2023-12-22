@@ -12,7 +12,7 @@ public abstract class AbstractOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
-    @SequenceGenerator(name = "order_generator", sequenceName = "order_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "order_generator", sequenceName = "sequence_order_id", allocationSize = 1)
     private Long id;
     public abstract OrderDetail getorderDetail();
     public abstract Collection<? extends OrderItem> getOrderItems();

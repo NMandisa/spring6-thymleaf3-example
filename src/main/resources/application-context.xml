@@ -76,10 +76,10 @@
         <property name="arguments" value="false"/>
     </bean>
 
-    <bean id="log4jContext" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+    <!--<bean id="log4jContext" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetObject" ref="log4jInitialization"/>
         <property name="targetMethod" value="setConfigLocation"/>
-        <property name="arguments" value="classpath:./log4j2.properties"/>
-    </bean>
+        <property name="arguments" value="classpath:./log4j.properties"/>
+    </bean>-->
 
 </beans>

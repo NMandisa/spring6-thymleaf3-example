@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class Warehouse implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "warehouse_generator")
-    @SequenceGenerator(name = "warehouse_generator", sequenceName = "warehouse_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "warehouse_generator", sequenceName = "sequence_warehouse_id", allocationSize = 1)
     private Long id;
 
     @Column(name="warehouse_name")

@@ -11,7 +11,7 @@ import java.util.Collection;
 public abstract class AbstractBasket {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "basket_generator")
-    @SequenceGenerator(name = "basket_generator", sequenceName = "basket_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "basket_generator", sequenceName = "sequence_basket_id", allocationSize = 1)
     private Long id;
     public abstract Collection<? extends BasketItem> getBasketItems();
 }

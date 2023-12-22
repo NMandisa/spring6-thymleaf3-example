@@ -24,7 +24,6 @@ import java.util.logging.Logger;
  */
 @Component
 @Scope("singleton")
-@PropertySource("classpath:/messages/messages.properties")
 public class DefaultProductFacade implements ProductFacade {
     private static final Logger LOGGER = Logger.getLogger(ProductFacade.class.getName());
     private @NonNull ProductRepository productRepository;

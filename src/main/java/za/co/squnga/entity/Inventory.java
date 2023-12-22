@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class Inventory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventory_generator")
-    @SequenceGenerator(name = "inventory_generator", sequenceName = "inventory_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "inventory_generator", sequenceName = "sequence_inventory_id", allocationSize = 1)
     private Long id;
     private int inventoryAmount;
     private Long warehouseId;

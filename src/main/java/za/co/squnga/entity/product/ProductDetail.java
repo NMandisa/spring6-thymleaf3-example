@@ -15,6 +15,6 @@ import lombok.*;
 public class ProductDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_detail_generator")
-    @SequenceGenerator(name = "product_detail_generator", sequenceName = "product_image_sequence_name", allocationSize = 1)
+    @SequenceGenerator(name = "product_detail_generator", sequenceName = "sequence_product_detail_id", allocationSize = 1)
     private Long id;
 }
