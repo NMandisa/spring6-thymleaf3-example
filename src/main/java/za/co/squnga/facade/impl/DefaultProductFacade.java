@@ -3,6 +3,7 @@ package za.co.squnga.facade.impl;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,10 @@ import java.util.logging.Logger;
 public class DefaultProductFacade implements ProductFacade {
     private static final Logger LOGGER = Logger.getLogger(ProductFacade.class.getName());
     private @NonNull ProductRepository productRepository;
+    private MessageSource messageSource;
+    @Autowired
+    public MessageSource messageSource()
+    {return messageSource;}
     private MapperUtil mapperUtil;
     @Autowired
     @Qualifier("mapperUtil")
@@ -42,7 +47,7 @@ public class DefaultProductFacade implements ProductFacade {
             //LOGGER.log(Level.SEVERE,SpringUtil.getApplicationContext().getMessage(WebConstants.PRODUCT_REPOSITORY_NULL,null, Locale.ENGLISH));
             throw new ProductRepositoryNullException("Product repository failed to initialization or is not initialized");
         }
-        LOGGER.info(" Product Repository Find All() " + SpringUtil.getApplicationContext().getMessage(WebConstants.PRODUCT_REPOSITORY_NULL, null, Locale.ENGLISH));
+        LOGGER.info(" Product Repository Find All() " + messageSource.getMessage(WebConstants.PRODUCT_REPOSITORY_NULL, null, Locale.ENGLISH));
         Collection<ProductDTO> productDTOs = new ArrayList<>();
         for ( Product product : productRepository.findAll() ){
             ProductDTO productDTO = mapperUtil.convertProductEntityToDto(product);

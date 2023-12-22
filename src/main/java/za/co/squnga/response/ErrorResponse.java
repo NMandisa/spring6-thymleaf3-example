@@ -1,4 +1,4 @@
-package za.co.squnga.dto;
+package za.co.squnga.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponseDTO {
-
+public class ErrorResponse {
     private LocalDateTime timestamp;
     private String message;
     private String details;
