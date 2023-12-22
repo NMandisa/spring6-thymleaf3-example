@@ -19,6 +19,7 @@
 	<mvc:resources mapping="/js/" location="WEB-INF/resources/theme/js/" cache-period="31556926" />
 	<mvc:resources mapping="/js/bootstrap/" location="WEB-INF/resources/theme/js/bootstrap/" cache-period="31556926" />
 	<mvc:resources mapping="/js/jquery/" location="WEB-INF/resources/theme/js/jquery/" cache-period="31556926" />
+	<mvc:resources mapping="/errors/**" location="WEB-INF/errors/" cache-period="31556926" />
 	
 	<context:component-scan  base-package="za.co.squnga" />
 	<mvc:annotation-driven />
