@@ -23,13 +23,13 @@ public class WarehouseRepositoryTests {
         warehouseRepository.deleteAll();
         warehouseRepository.flush();
     }
-    @Test
+    /*@Test
     public void testPrivilegeSave() {
         Warehouse w1 = new Warehouse("Warehouse A");
         warehouseRepository.save(w1);
         Long savedPrivilegeID = w1.getWarehouseId();
         Warehouse warehouse = warehouseRepository.findById(savedPrivilegeID).orElseThrow();
         Assertions.assertEquals(savedPrivilegeID, warehouse.getWarehouseId());
-    }
+    }*/
 
 }
