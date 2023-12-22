@@ -38,37 +38,35 @@
         <servlet-name>squnga-dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-<!--
 
     <error-page>
         <location>/errors</location>
     </error-page>
     <error-page>
-        &lt;!&ndash; Missing login &ndash;&gt;
+        <!-- Missing login -->
         <error-code>401</error-code>
         <location>/errors/401.html</location>
     </error-page>
     <error-page>
-        &lt;!&ndash; Forbidden directory listing &ndash;&gt;
+        <!-- Forbidden directory listing -->
         <error-code>403</error-code>
         <location>/errors/403.html</location>
     </error-page>
     <error-page>
-        &lt;!&ndash; Missing resource &ndash;&gt;
+        <!-- Missing resource -->
         <error-code>404</error-code>
         <location>/errors/404.html</location>
     </error-page>
     <error-page>
-        &lt;!&ndash; Uncaught exception &ndash;&gt;
+        <!-- Uncaught exception -->
         <error-code>500</error-code>
         <location>/errors/500.html</location>
     </error-page>
     <error-page>
-        &lt;!&ndash; Unsupported servlet method &ndash;&gt;
+        <!-- Unsupported servlet method -->
         <error-code>503</error-code>
         <location>/errors/503.html</location>
     </error-page>
--->
 
 
 </web-app>

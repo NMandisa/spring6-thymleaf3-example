@@ -2,7 +2,9 @@ package za.co.squnga.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 import za.co.squnga.enums.WarehouseType;
+import za.co.squnga.enums.converter.WarehouseTypeConverter;
 
 import java.io.Serializable;
 
@@ -24,8 +26,9 @@ public class Warehouse implements Serializable {
     @Column(name="warehouse_name")
     private String warehouseName;
 
-    @Column(name="warehouse_type", nullable = false)
+    @Column(name="warehouse_type")
     @Enumerated(EnumType.STRING)
+    @Convert(converter = WarehouseTypeConverter.class)
     private WarehouseType warehouseType;
 
 }
