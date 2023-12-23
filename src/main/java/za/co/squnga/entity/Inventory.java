@@ -22,7 +22,10 @@ public class Inventory implements Serializable {
     private int inventoryAmount;
     private Long warehouseId;
     @OneToOne
-    @JoinTable(name = "inventory_belongs_warehouse")
+    @JoinTable(name = "inventory_belongs_warehouse",joinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "warehouse_id", referencedColumnName = "id",foreignKey=@ForeignKey(name = "warehouse_inventory_fk")))
     private Warehouse warehouse;
+    @ManyToOne
+    private Stock stock;
 
 }

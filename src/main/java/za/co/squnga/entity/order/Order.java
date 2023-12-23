@@ -15,11 +15,11 @@ import java.util.Collection;
 @Entity
 @Table(name = "order")
 public class Order extends AbstractOrder{
-    @OneToMany
-    @JoinTable(name = "order_has_order_items")
+    @OneToMany(mappedBy = "order")
     private Collection<OrderItem> orderItems;
     @OneToOne
-    @JoinTable(name = "order_has_order_detail")
+    @JoinTable(name = "order_has_order_detail",joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "order_detail_id", referencedColumnName = "id",foreignKey=@ForeignKey(name = "order_order_detail_fk")))
     private OrderDetail orderDetail;
     @Override
     public OrderDetail getorderDetail() {return orderDetail;}

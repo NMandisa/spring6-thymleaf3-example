@@ -1,6 +1,8 @@
 package za.co.squnga.controller.ws;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -13,16 +15,15 @@ import za.co.squnga.service.ProductService;
 import za.co.squnga.web.WebRestURIConstants;
 
 import java.util.Collection;
-import java.util.logging.Logger;
 
 /**
  * @author Noxolo.Mkhungo
  */
 @CrossOrigin(allowedHeaders = {"*"}, origins = "*")
 @RestController
-//@RequestMapping(WebRestURIConstants.PRODUCTS_REST_MAPPING)
+@RequestMapping(WebRestURIConstants.PRODUCTS_REST_MAPPING)
 public class ProductRestController {
-    private static final Logger LOGGER = Logger.getLogger(ProductRestController.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class.getName());
     private ProductService productService;
     @Autowired
     public ProductService productService (@Qualifier("defaultProductService") ProductService productService)

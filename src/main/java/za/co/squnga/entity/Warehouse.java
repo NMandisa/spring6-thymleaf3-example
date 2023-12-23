@@ -31,4 +31,9 @@ public class Warehouse implements Serializable {
     @Convert(converter = WarehouseTypeConverter.class)
     private WarehouseType warehouseType;
 
+    @OneToOne
+    @JoinTable(name = "inventory_belongs_warehouse",joinColumns = @JoinColumn(name = "warehouse_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "id",foreignKey=@ForeignKey(name = "warehouse_inventory_fk")))
+    private Inventory inventory;
+
 }

@@ -17,7 +17,7 @@
 
     <context:property-placeholder location="classpath:./application.properties"/>
     <context:annotation-config />
-    <context:component-scan base-package="za.co.squnga.facade, za.co.squnga.service"/>
+    <!--<context:component-scan base-package="za.co.squnga.facade, za.co.squnga.service"/>-->
     <context:component-scan base-package="za.co.squnga.repository">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>
@@ -52,6 +52,7 @@
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.dialect.storage_engine">${hibernate.dialect.storage_engine}</prop>
                 <prop key="hibernate.id.new_generator_mapping">${hibernate.id.new_generator_mapping}</prop>
                 <prop key="hibernate.hikari.dataSource.minimumIdle">${hibernate.hikari.dataSource.minimumIdle}</prop>
                 <prop key="hibernate.hikari.dataSource.maximumPoolSize">${hibernate.hikari.dataSource.maximumPoolSize}</prop>
@@ -69,7 +70,7 @@
          <property name="defaultEncoding" value="UTF-8"/>
      </bean>
 
-    <!--https://stackoverflow.com/questions/57093867/java-how-to-configure-log4j2-xml-->
+   <!-- https://stackoverflow.com/questions/57093867/java-how-to-configure-log4j2-xml
     <bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="org.apache.logging.log4j.core.LoggerContext" />
         <property name="targetMethod" value="getContext" />
@@ -80,6 +81,6 @@
         <property name="targetObject" ref="log4jInitialization"/>
         <property name="targetMethod" value="setConfigLocation"/>
         <property name="arguments" value="classpath:/log4j2.properties"/>
-    </bean>
+    </bean>-->
 
 </beans>

@@ -21,13 +21,13 @@ public class BaseProduct extends AbstractProduct {
     @Column(name = "product_name")
     private String productName;
     @OneToOne
-    @JoinTable(name = "product_has_product_detail")
+    //@JoinTable(name = "product_has_product_detail")
     private ProductDetail productDetail;
     @OneToMany
-    @JoinTable(name = "product_has_product_images")
+    //@JoinTable(name = "product_has_product_images")
     private Collection<ProductImage>  productImages;
     @OneToMany
-    @JoinTable(name = "product_has_product_reviews")
+    //@JoinTable(name = "product_has_product_reviews")
     private Collection<ProductReview> productReviews;
     @Override
     public Collection<? extends ProductReview> getProductRatings() {

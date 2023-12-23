@@ -22,8 +22,6 @@ public class Return implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "return_generator")
     @SequenceGenerator(name = "return_generator", sequenceName = "sequence_return_id", allocationSize = 1)
     private Long id;
-
-    @OneToMany
-    @JoinTable(name = "return_has_order_items")
+    @OneToMany(mappedBy = "aReturn")
     private Collection<OrderItem> orderItems;
 }
