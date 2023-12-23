@@ -11,11 +11,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import za.co.squnga.response.ErrorResponse;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.time.format.DateTimeFormatter;
 
 @RestControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomizedResponseEntityExceptionHandler.class.getName());
+    private static DateTimeFormatter CUSTOM_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     /*@ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, WebRequest request){
         ErrorResponse error = new ErrorResponse(LocalDateTime.now(),
@@ -24,14 +25,14 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }*/
     @ExceptionHandler(ProductNotFoundException.class)
     public final ResponseEntity<ErrorResponse> handleProductNotFoundException(Exception ex, WebRequest request){
-        ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now(),
-                ex.getMessage(), request.getDescription(false));
+        ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now().format(CUSTOM_FORMATTER), ex.getMessage(), request.getDescription(false));
+        LOGGER.error(ex.getMessage(),new ProductNotFoundException());
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);//404
     }
 
     @ExceptionHandler(ProductAlreadyExistsException.class)
     public final ResponseEntity<ErrorResponse> handleProductAlreadyExistsException(Exception ex, WebRequest request) {
-        ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now(),
+        ErrorResponse errorDetails = new ErrorResponse(LocalDateTime.now().format(CUSTOM_FORMATTER),
                 ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);//409
     }
