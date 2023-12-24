@@ -19,5 +19,10 @@ public class BasketItem {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "basket_item_generator")
     @SequenceGenerator(name = "basket_item_generator", sequenceName = "sequence_basket_item_id", allocationSize = 1)
-    private Long id;
+    @Column(name = "basket_item_id")
+    private Long basketItemId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "basket_has_basket_items",joinColumns = @JoinColumn(name = "basket_item_id", referencedColumnName = "basket_item_id"),
+            inverseJoinColumns = @JoinColumn(name = "basket_id", referencedColumnName = "basket_id",foreignKey=@ForeignKey(name = "basket_item_basket_fk")))
+    private Basket basket;
 }

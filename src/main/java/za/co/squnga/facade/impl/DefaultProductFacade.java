@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
 import za.co.squnga.exception.ProductRepositoryNullException;
@@ -28,17 +29,17 @@ public class DefaultProductFacade implements ProductFacade {
     private ProductRepository productRepository;
     private MessageSource messageSource;
     @Autowired
-    public MessageSource messageSource()
-    {return messageSource;}
+    public MessageSource messageSource(MessageSource messageSource)
+    {return this.messageSource=messageSource;}
     private MapperUtil mapperUtil;
     @Autowired
     @Qualifier("mapperUtil")
-    public MapperUtil setMapperUtil()
-    {return mapperUtil;}
-     @Autowired
-     @Qualifier("productRepository")
-     public ProductRepository productRepository()
-     {return productRepository;}
+    public MapperUtil setMapperUtil(MapperUtil mapperUtil)
+    {return this.mapperUtil=mapperUtil;}
+     /*@Autowired
+     public ProductRepository productRepository(ProductRepository productRepository)
+     {return this.productRepository=productRepository;}*/
+    @Transactional(readOnly = true)
     public Collection<?> getAllProducts(){
         LOGGER.info("Get All Products");
         if(productRepository == null){

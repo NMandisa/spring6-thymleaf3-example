@@ -21,7 +21,8 @@ public class Warehouse implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "warehouse_generator")
     @SequenceGenerator(name = "warehouse_generator", sequenceName = "sequence_warehouse_id", allocationSize = 1)
-    private Long id;
+    @Column(name = "warehouse_id")
+    private Long warehouseId;
 
     @Column(name="warehouse_name")
     private String warehouseName;
@@ -32,8 +33,8 @@ public class Warehouse implements Serializable {
     private WarehouseType warehouseType;
 
     @OneToOne
-    @JoinTable(name = "inventory_belongs_warehouse",joinColumns = @JoinColumn(name = "warehouse_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "id",foreignKey=@ForeignKey(name = "warehouse_inventory_fk")))
+    @JoinTable(name = "warehouse_has_inventory",joinColumns = @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id"),
+            inverseJoinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id",foreignKey=@ForeignKey(name = "warehouse_inventory_fk")))
     private Inventory inventory;
 
 }

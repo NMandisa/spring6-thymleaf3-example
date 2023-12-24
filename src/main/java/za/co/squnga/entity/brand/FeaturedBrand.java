@@ -13,4 +13,6 @@ import lombok.*;
 @Entity
 @Table(name = "featured_brand")
 public class FeaturedBrand extends AbstractBrand{
+    @Column(name = "featured_brand_name")
+    private String featuredBrandName;
 }

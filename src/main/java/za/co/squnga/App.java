@@ -22,6 +22,5 @@ public class App
         SpringUtil springUtil =new SpringUtil();
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/application-context.xml");
         springUtil.setApplicationContext(applicationContext);
-        LOGGER.info(" productRepository  "+SpringUtil.getApplicationContext().getMessage(WebConstants.PRODUCT_REPOSITORY_NULL,null,Locale.ENGLISH));
     }
 }

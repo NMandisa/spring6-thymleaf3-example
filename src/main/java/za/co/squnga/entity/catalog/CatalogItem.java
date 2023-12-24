@@ -2,6 +2,9 @@ package za.co.squnga.entity.catalog;
 
 import jakarta.persistence.*;
 import lombok.*;
+import za.co.squnga.entity.product.BaseProduct;
+
+import java.util.Collection;
 
 /**
  * @author Noxolo.Mkhungo
@@ -17,5 +20,14 @@ public class CatalogItem {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "catalog_item_generator")
     @SequenceGenerator(name = "catalog_item_generator", sequenceName = "sequence_catalog_item_id", allocationSize = 1)
-    private Long id;
+    @Column(name = "catalog_item_id")
+    private Long catalogItemId;
+    @ManyToOne
+    @JoinTable(name = "catalog_item_belong_catalog",joinColumns = @JoinColumn(name = "catalog_item_id", referencedColumnName = "catalog_item_id"),
+            inverseJoinColumns = @JoinColumn(name = "catalog_id", referencedColumnName = "catalog_id",foreignKey=@ForeignKey(name = "catalog_item_catalog_fk")))
+    private Catalog catalog;
+    @ManyToMany
+    @JoinTable(name = "catalog_item_has_product",joinColumns = @JoinColumn(name = "catalog_item_id", referencedColumnName = "catalog_item_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name = "catalog_item_product_fk")))
+    private Collection<BaseProduct> product;
 }

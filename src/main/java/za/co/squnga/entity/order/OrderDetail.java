@@ -19,5 +19,11 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_detail_generator")
     @SequenceGenerator(name = "order_detail_generator", sequenceName = "sequence_order_detail_id", allocationSize = 1)
-    private Long id;
+    @Column(name = "order_detail_jd")
+    private Long orderDetailId;
+    @OneToOne
+    @JoinTable(name = "order_has_order_detail",joinColumns = @JoinColumn(name = "order_detail_jd", referencedColumnName = "order_detail_jd"),
+            inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id",foreignKey=@ForeignKey(name = "order_detail_order_fk")))
+    private Order order;
+
 }

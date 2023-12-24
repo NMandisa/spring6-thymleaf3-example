@@ -18,11 +18,23 @@ import java.util.Collection;
 @Entity
 @Table(name = "catalog")
 public class Catalog extends BaseCatalog{
-    @OneToMany
-    @JoinTable(name = "catalog_has_catalog_items")
+    @Column(name = "catalog_name")
+    private String catalogName;
+
+    @OneToMany(mappedBy = "catalog")
     private Collection<CatalogItem> catalogItems;
     @Override
     public Collection<? extends CatalogItem> getCatalogItems() {
         return catalogItems;
+    }
+    @Override
+    public void addCatalogItem(CatalogItem catalogItem) {
+        catalogItems.add(catalogItem);
+        catalogItem.setCatalog(this);
+    }
+    @Override
+    public void removeCatalogItem(CatalogItem catalogItem) {
+        catalogItems.remove(catalogItem);
+        catalogItem.setCatalog(null);
     }
 }
