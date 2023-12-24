@@ -12,21 +12,25 @@ public class WebRestURIConstants {
     public static final String WAREHOUSES_REST_MAPPING = "/api/warehouses";
     public static final String GET_ALL_WAREHOUSES = "/";
     public static final String GET_WAREHOUSE = "/{id}";
+    public static final String GET_WAREHOUSE_INVENTORY = "/{id}/inventories";
     public static final String CREATE_WAREHOUSE = "/create";
     public static final String DELETE_WAREHOUSE = "/delete/{id}";
     public static final String CATALOGS_REST_MAPPING = "/api/catalogs";
     public static final String GET_ALL_CATALOGS = "/";
     public static final String GET_CATALOG = "/{id}";
+    public static final String GET_CATALOG_GET_CATALOG_ITEMS  = "/{id}/catalog-items";
     public static final String CREATE_CATALOG = "/create";
     public static final String DELETE_CATALOG = "/delete/{id}";
     public static final String BASKETS_REST_MAPPING = "/api/baskets";
     public static final String GET_ALL_BASKETS = "/";
     public static final String GET_BASKET = "/{id}";
+    public static final String GET_BASKET_GET_BASKET_ITEMS  = "/{id}/basket-items";
     public static final String CREATE_BASKET = "/create";
     public static final String DELETE_BASKET = "/delete/{id}";
     public static final String ORDERS_REST_MAPPING = "/api/orders";
     public static final String GET_ALL_ORDERS = "/";
     public static final String GET_ORDER = "/{id}";
+    public static final String GET_ORDER_GET_ORDER_ITEMS  = "/{id}/order-items";
     public static final String CREATE_ORDER = "/create";
     public static final String DELETE_ORDER = "/delete/{id}";
 
