@@ -250,6 +250,14 @@
             <version>6.1.1</version>
             <scope>test</scope>
         </dependency>
+        <!--Start Google Analytics Dependency -->
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-analyticsreporting -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-analyticsreporting</artifactId>
+            <version>v4-rev174-1.25.0</version>
+        </dependency>
+        <!--END Google Analytics Dependency -->
 
 
         <!--Start Jakarta Dependency -->
