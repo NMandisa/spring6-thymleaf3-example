@@ -1,4 +1,4 @@
-package za.co.squnga.repository.custom;
+package za.co.squnga.repository.customs;
 
 /**
  * @author Noxolo.Mkhungo

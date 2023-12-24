@@ -21,8 +21,8 @@ public class Stock implements Serializable {
     @SequenceGenerator(name = "stock_generator", sequenceName = "sequence_stock_id", allocationSize = 1)
     @Column(name = "stock_id")
     private Long stockId;
-    @OneToMany
-    @JoinTable(name = "stock_belongs_to_inventory",joinColumns = @JoinColumn(name = "stock_id", referencedColumnName = "stock_id"),
-            inverseJoinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id",foreignKey=@ForeignKey(name = "stock_inventory_fk")))
+    @OneToMany(mappedBy = "stock")
+    /*@JoinTable(name = "stock_belongs_to_inventory",joinColumns = @JoinColumn(name = "stock_id", referencedColumnName = "stock_id"),
+            inverseJoinColumns = @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id",foreignKey=@ForeignKey(name = "stock_inventory_fk")))*/
     private Collection<Inventory> inventories;
 }

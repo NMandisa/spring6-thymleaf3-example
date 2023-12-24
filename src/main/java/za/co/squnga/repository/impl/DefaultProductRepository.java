@@ -1,10 +1,9 @@
 package za.co.squnga.repository.impl;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.squnga.entity.Product;
-import za.co.squnga.repository.custom.CustomProductRepository;
+import za.co.squnga.repository.customs.CustomProductRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

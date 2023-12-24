@@ -1,10 +1,8 @@
-package za.co.squnga.repository.custom;
+package za.co.squnga.repository.customs;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import za.co.squnga.entity.Product;
-import za.co.squnga.repository.ProductRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

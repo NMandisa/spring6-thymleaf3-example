@@ -23,10 +23,12 @@ public class CatalogItem {
     @Column(name = "catalog_item_id")
     private Long catalogItemId;
     @ManyToOne
+    @JoinColumn
     @JoinTable(name = "catalog_item_belong_catalog",joinColumns = @JoinColumn(name = "catalog_item_id", referencedColumnName = "catalog_item_id"),
             inverseJoinColumns = @JoinColumn(name = "catalog_id", referencedColumnName = "catalog_id",foreignKey=@ForeignKey(name = "catalog_item_catalog_fk")))
     private Catalog catalog;
     @ManyToMany
+    @JoinColumn
     @JoinTable(name = "catalog_item_has_product",joinColumns = @JoinColumn(name = "catalog_item_id", referencedColumnName = "catalog_item_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name = "catalog_item_product_fk")))
     private Collection<BaseProduct> product;

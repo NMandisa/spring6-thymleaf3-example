@@ -12,7 +12,7 @@ import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
 import za.co.squnga.exception.ProductRepositoryNullException;
 import za.co.squnga.facade.ProductFacade;
-import za.co.squnga.repository.custom.CustomProductRepository;
+import za.co.squnga.repository.customs.CustomProductRepository;
 import za.co.squnga.utils.MapperUtil;
 import za.co.squnga.web.WebConstants;
 

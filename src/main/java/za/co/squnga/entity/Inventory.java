@@ -27,6 +27,7 @@ public class Inventory implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id",foreignKey=@ForeignKey(name = "warehouse_inventory_fk")))
     private Warehouse warehouse;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn
     private Stock stock;
 
 }

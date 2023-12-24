@@ -20,11 +20,13 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private Long orderItemId;
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable(name = "returned_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),
-            inverseJoinColumns = @JoinColumn(name = "return_id", referencedColumnName = "return_id",foreignKey=@ForeignKey(name = "return_order_item_fk")))
+    @JoinColumn
+    /*@JoinTable(name = "returned_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),
+            inverseJoinColumns = @JoinColumn(name = "return_id", referencedColumnName = "return_id",foreignKey=@ForeignKey(name = "return_order_item_fk")))*/
     private Return aReturn;
     @ManyToOne
-    @JoinTable(name = "order_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id",foreignKey=@ForeignKey(name = "ordered_order_item_fk")))
+    @JoinColumn
+    /*@JoinTable(name = "order_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id",foreignKey=@ForeignKey(name = "ordered_order_item_fk")))*/
     private Order order;
 }

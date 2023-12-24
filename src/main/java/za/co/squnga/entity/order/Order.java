@@ -17,9 +17,9 @@ import java.util.Collection;
 public class Order extends AbstractOrder{
     @OneToMany(mappedBy = "order")
     private Collection<OrderItem> orderItems;
-    @OneToOne
-    @JoinTable(name = "order_has_order_detail",joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_detail_id", referencedColumnName = "order_detail_jd",foreignKey=@ForeignKey(name = "order_order_detail_fk")))
+    @OneToOne(mappedBy = "order")
+    /*@JoinTable(name = "order_has_order_detail",joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_detail_id", referencedColumnName = "order_detail_id",foreignKey=@ForeignKey(name = "order_order_detail_fk")))*/
     private OrderDetail orderDetail;
 
     @Override
