@@ -1,6 +1,5 @@
 package za.co.squnga.facade.impl;
 
-import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
 import za.co.squnga.exception.ProductRepositoryNullException;
 import za.co.squnga.facade.ProductFacade;
-import za.co.squnga.repository.ProductRepository;
+import za.co.squnga.repository.custom.CustomProductRepository;
 import za.co.squnga.utils.MapperUtil;
 import za.co.squnga.web.WebConstants;
 
@@ -26,7 +25,7 @@ import java.util.*;
 @Scope("singleton")
 public class DefaultProductFacade implements ProductFacade {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductFacade.class.getName());
-    private ProductRepository productRepository;
+    private CustomProductRepository productRepository;
     private MessageSource messageSource;
     @Autowired
     public MessageSource messageSource(MessageSource messageSource)
@@ -36,9 +35,9 @@ public class DefaultProductFacade implements ProductFacade {
     @Qualifier("mapperUtil")
     public MapperUtil setMapperUtil(MapperUtil mapperUtil)
     {return this.mapperUtil=mapperUtil;}
-     /*@Autowired
-     public ProductRepository productRepository(ProductRepository productRepository)
-     {return this.productRepository=productRepository;}*/
+     @Autowired
+     public CustomProductRepository productRepository(@Qualifier("defaultProductRepository") CustomProductRepository productRepository)
+     {return this.productRepository=productRepository;}
     @Transactional(readOnly = true)
     public Collection<?> getAllProducts(){
         LOGGER.info("Get All Products");
@@ -47,7 +46,7 @@ public class DefaultProductFacade implements ProductFacade {
         }
         LOGGER.debug(" Product Repository Find All() " + messageSource.getMessage(WebConstants.PRODUCT_REPOSITORY_NULL, null, Locale.getDefault()),ProductRepositoryNullException.class);
         Collection<ProductDTO> productDTOs = new ArrayList<>();
-        for ( Product product : productRepository.findAll() ){
+        for ( Product product : productRepository.findAllOrderByNameASC()){
             ProductDTO productDTO = mapperUtil.convertProductEntityToDto(product);
             productDTOs.add(productDTO);
         }
