@@ -14,7 +14,6 @@ import za.co.squnga.exception.ProductRepositoryNullException;
 import za.co.squnga.facade.ProductFacade;
 import za.co.squnga.repository.customs.CustomProductRepository;
 import za.co.squnga.utils.MapperUtil;
-import za.co.squnga.web.WebConstants;
 
 import java.util.*;
 
@@ -44,9 +43,10 @@ public class DefaultProductFacade implements ProductFacade {
         if(productRepository == null){
             throw new ProductRepositoryNullException("Product repository failed to initialization or is not initialized");
         }
-        LOGGER.debug(" Product Repository Find All() " + messageSource.getMessage(WebConstants.PRODUCT_REPOSITORY_NULL, null, Locale.getDefault()),ProductRepositoryNullException.class);
         Collection<ProductDTO> productDTOs = new ArrayList<>();
+        LOGGER.debug(" Product Repository Find All Order By Name ASC ");
         for ( Product product : productRepository.findAllOrderByNameASC()){
+            LOGGER.debug("  for ( Product product : productRepository.findAllOrderByNameASC()){ ");
             ProductDTO productDTO = mapperUtil.convertProductEntityToDto(product);
             productDTOs.add(productDTO);
         }

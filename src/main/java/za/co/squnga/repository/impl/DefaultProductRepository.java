@@ -1,14 +1,16 @@
 package za.co.squnga.repository.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.squnga.entity.Product;
 import za.co.squnga.repository.customs.CustomProductRepository;
+import za.co.squnga.utils.HibernateUtil;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author Noxolo.Mkhungo
@@ -16,12 +18,11 @@ import java.util.Optional;
 @Repository
 @Transactional
 public class DefaultProductRepository implements CustomProductRepository {
-   /* private SessionFactory sessionFactory;
-
+    private HibernateUtil hibernateUtil;
     @Autowired
-    public SessionFactory sessionFactory(SessionFactory sessionFactory){
-        this.sessionFactory=sessionFactory;
-    }*/
+    public HibernateUtil hibernateUtil(@Qualifier("hibernateUtil") HibernateUtil hibernateUtil){
+        return this.hibernateUtil=hibernateUtil;
+    }
 
     @Override
     public Product findByName(String name) {
@@ -130,6 +131,6 @@ public class DefaultProductRepository implements CustomProductRepository {
 
     @Override
     public List<Product> findAllOrderByNameASC() {
-        return null;
+        return hibernateUtil.session().createQuery("SELECT p FROM Product p", Product.class).getResultList();
     }
 }

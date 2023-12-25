@@ -37,8 +37,5 @@ public class SecurityConfiguration {
                 .authorizeRequests().requestMatchers("/").anonymous().anyRequest().authenticated();*/
         return http.build();
     }
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }
