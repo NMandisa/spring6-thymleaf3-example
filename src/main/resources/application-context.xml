@@ -22,7 +22,8 @@
     <context:component-scan base-package="za.co.squnga.repository">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
     </context:component-scan>
-    <jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>
+    <!--<jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>-->
+    <jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
     <tx:annotation-driven />
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
         <constructor-arg ref="hikariConfig" />
@@ -33,6 +34,9 @@
         <property name="connectionTestQuery" value="${hikari.config.connectionTestQuery}" />
         <property name="dataSourceClassName" value="${hikari.config.dataSourceClassName}" />
         <property name="autoCommit" value="true"/>
+<!--        <property name="transactionIsolation" value="${hikari.config.transactionIsolation}" />
+        <property name="maximumPoolSize" value="${hikari.config.maximumPoolSize}" />
+        <property name="minimumIdle" value="${hikari.config.minimumIdle}"/>-->
        <!-- <property name="transactionIsolation" value="${hikari.config.transactionIsolation}"/>-->
         <!--<property name="threadFactory" value="" />-->
         <property name="dataSourceProperties">
@@ -44,7 +48,8 @@
         </property>
     </bean>
 
-    <bean id="sessionFactory" name="{sessionFactory,entityManagerFactory}" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <!--name="{sessionFactory,entityManagerFactory}"-->
+    <!--<bean id="sessionFactory" name="{sessionFactory,entityManagerFactory}" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="za.co.squnga.entity" />
         <property name="hibernateProperties">
@@ -61,20 +66,46 @@
                 <prop key="hibernate.hikari.dataSource.idleTimeout">${hibernate.hikari.dataSource.idleTimeout}</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+   <!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="sessionFactory"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <property name="packagesToScan" value="za.co.squnga.entity" />
+    </bean>-->
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="za.co.squnga.entity" />
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="jpa.hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="jpa.hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="jpa.hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="jpa.hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="jpa.hibernate.transactionIsolation">${hibernate.hikari.dataSource.transactionIsolation}</prop>
+                <prop key="jpa.hibernate.dialect.storage_engine">${hibernate.dialect.storage_engine}</prop>
+                <prop key="jpa.hibernate.id.new_generator_mapping">${hibernate.id.new_generator_mapping}</prop>
+                <prop key="jpa.hibernate.minimumIdle">${hibernate.hikari.dataSource.minimumIdle}</prop>
+                <prop key="jpa.hibernate.maximumPoolSize">${hibernate.hikari.dataSource.maximumPoolSize}</prop>
+                <prop key="jpa.hibernate.idleTimeout">${hibernate.hikari.dataSource.idleTimeout}</prop>
+            </props>
+        </property>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
+
+    <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+   <!-- <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>-->
 
 
 
