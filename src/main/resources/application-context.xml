@@ -19,9 +19,9 @@
     <context:annotation-config />
     <!--<context:component-scan  base-package="za.co.squnga.repository" />-->
     <!--<context:component-scan base-package="za.co.squnga.facade, za.co.squnga.service,za.co.squnga.repository"/>-->
-   <!-- <context:component-scan base-package="za.co.squnga.repository">
+    <context:component-scan base-package="za.co.squnga.repository">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-    </context:component-scan>-->
+    </context:component-scan>
     <jpa:repositories base-package="za.co.squnga.repository" entity-manager-factory-ref="sessionFactory" transaction-manager-ref="transactionManager"/>
     <tx:annotation-driven />
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
@@ -44,7 +44,7 @@
         </property>
     </bean>
 
-    <bean id="sessionFactory" name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <bean id="sessionFactory" name="{sessionFactory,entityManagerFactory}" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="za.co.squnga.entity" />
         <property name="hibernateProperties">
@@ -63,12 +63,34 @@
         </property>
     </bean>
 
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="sessionFactory"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <property name="packagesToScan" value="za.co.squnga.entity" />
+    </bean>
+
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-         <property name="basename" value="messages.messages"/>
+
+
+
+
+
+
+
+
+
+
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+         <property name="basename" >
+             <value>messages.messages</value>
+         </property>
          <property name="defaultEncoding" value="UTF-8"/>
      </bean>
 

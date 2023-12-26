@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  */
 @Component
 @Scope("singleton")
-@PropertySource("classpath:/messages/messages.properties")
 public class DefaultCatalogFacade implements CatalogFacade {
     private static final Logger LOGGER  = Logger.getLogger(CatalogFacade.class.getName());
 

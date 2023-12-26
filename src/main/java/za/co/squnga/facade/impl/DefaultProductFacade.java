@@ -12,6 +12,7 @@ import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.entity.Product;
 import za.co.squnga.exception.ProductRepositoryNullException;
 import za.co.squnga.facade.ProductFacade;
+import za.co.squnga.repository.ProductRepository;
 import za.co.squnga.repository.customs.CustomProductRepository;
 import za.co.squnga.utils.MapperUtil;
 
@@ -24,7 +25,7 @@ import java.util.*;
 @Scope("singleton")
 public class DefaultProductFacade implements ProductFacade {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductFacade.class.getName());
-    private CustomProductRepository productRepository;
+    private ProductRepository productRepository;
     private MessageSource messageSource;
     @Autowired
     public MessageSource messageSource(MessageSource messageSource)
@@ -35,7 +36,7 @@ public class DefaultProductFacade implements ProductFacade {
     public MapperUtil setMapperUtil(MapperUtil mapperUtil)
     {return this.mapperUtil=mapperUtil;}
      @Autowired
-     public CustomProductRepository productRepository(@Qualifier("defaultProductRepository") CustomProductRepository productRepository)
+     public ProductRepository productRepository(@Qualifier("productRepository") ProductRepository productRepository)
      {return this.productRepository=productRepository;}
     @Transactional(readOnly = true)
     public Collection<?> getAllProducts(){
@@ -45,7 +46,7 @@ public class DefaultProductFacade implements ProductFacade {
         }
         Collection<ProductDTO> productDTOs = new ArrayList<>();
         LOGGER.debug(" Product Repository Find All Order By Name ASC ");
-        for ( Product product : productRepository.findAllOrderByNameASC()){
+        for ( Product product : productRepository.findAll()){
             LOGGER.debug("  for ( Product product : productRepository.findAllOrderByNameASC()){ ");
             ProductDTO productDTO = mapperUtil.convertProductEntityToDto(product);
             productDTOs.add(productDTO);
