@@ -17,7 +17,7 @@ import za.co.squnga.web.WebRestURIConstants;
 @RequestMapping(WebRestURIConstants.BASKETS_REST_MAPPING)
 public class BasketRestController {
     private static final Logger LOGGER  = LoggerFactory.getLogger(BasketRestController.class.getName());
-    @RequestMapping(WebRestURIConstants.GET_ALL_BASKETS)
+    @RequestMapping(value = WebRestURIConstants.GET_ALL_BASKETS,method = RequestMethod.GET)
     public String baskets(){
         LOGGER.info("baskets",BasketRestController.class.getName());
         return "baskets";
@@ -36,7 +36,7 @@ public class BasketRestController {
         return "remove basket item";
     }
     @RequestMapping(value = WebRestURIConstants.ADD_BASKET_ITEMS,method = RequestMethod.POST)
-    public String addBasketItems(@RequestBody BasketItem basketItem){
+    public String addBasketItems(@PathVariable("basket-id") Long basketId,@RequestBody BasketItem basketItem){
         return "add basket item";
     }
     @RequestMapping(value = WebRestURIConstants.CREATE_BASKET,method = RequestMethod.POST)
@@ -44,7 +44,7 @@ public class BasketRestController {
         return "create-basket";
     }
     @RequestMapping(value = WebRestURIConstants.DELETE_BASKET,method = RequestMethod.DELETE)
-    public String removeBasket(@PathVariable("basket-id") Long id){//will change it to reference dto in future
+    public String removeBasket(@PathVariable("basket-id") Long basketId){//will change it to reference dto in future
         return "delete-basket";
     }
 

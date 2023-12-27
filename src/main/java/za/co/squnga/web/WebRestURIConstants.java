@@ -36,7 +36,9 @@ public class WebRestURIConstants {
     public static final String ORDERS_REST_MAPPING = "/api/orders";
     public static final String GET_ALL_ORDERS = "/";
     public static final String GET_ORDER = "/{order-id}";
-    public static final String GET_ORDER_GET_ORDER_ITEMS  = "/{order-id}/order-items";
+    public static final String ORDER_GET_ORDER_ITEMS  = "/{order-id}/order-items";
+    public static final String ORDER_ADD_ORDER_ITEM  = "/{order-id}/order-items/create";
+    public static final String ORDER_DELETE_ORDER_ITEM  = "/{order-id}/order-items/{order-item-id}";
     public static final String CREATE_ORDER = "/create";
     public static final String DELETE_ORDER = "/delete/{order-id}";
 

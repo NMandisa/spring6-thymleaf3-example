@@ -16,7 +16,7 @@ import za.co.squnga.web.WebRestURIConstants;
 @RequestMapping(WebRestURIConstants.CATALOGS_REST_MAPPING)
 public class CatalogRestController {
     private static final Logger LOGGER  = LoggerFactory.getLogger(CatalogRestController.class.getName());
-    @RequestMapping(WebRestURIConstants.GET_ALL_CATALOGS)
+    @RequestMapping(value = WebRestURIConstants.GET_ALL_CATALOGS,method = RequestMethod.GET)
     public String catalogs(){
         LOGGER.atLevel(Level.DEBUG).log("catalogs","","",CatalogRestController.class.getName());
         return "catalogs";

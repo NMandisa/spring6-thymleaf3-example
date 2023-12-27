@@ -28,17 +28,17 @@ public class WarehouseRestController {
         return this.warehouseService=new DefaultWarehouseService();
     }
 
-    @RequestMapping(WebRestURIConstants.GET_ALL_WAREHOUSES)
+    @RequestMapping(value = WebRestURIConstants.GET_ALL_WAREHOUSES,method = RequestMethod.GET)
     public String warehouses(){
         LOGGER.atLevel(Level.DEBUG).log("warehouses","","",WarehouseRestController.class.getName());
         return "warehouses";
     }
     @RequestMapping(value = WebRestURIConstants.GET_WAREHOUSE,method = RequestMethod.POST)
-    public String warehouseById(@PathVariable("warehouse-id") Long id){
+    public String warehouseById(@PathVariable("warehouse-id") Long warehouseId){
         return "warehouses-specific-warehouse-using-id";
     }
     @RequestMapping(value = WebRestURIConstants.GET_WAREHOUSE_INVENTORY,method = RequestMethod.GET)
-    public String warehouseInventory(@PathVariable("warehouse-id") Long id){
+    public String warehouseInventory(@PathVariable("warehouse-id") Long warehouseId){
         return "warehouse-inventory-specific-warehouse-using-id";
     }
     @RequestMapping(value = WebRestURIConstants.CREATE_WAREHOUSE,method = RequestMethod.POST)
