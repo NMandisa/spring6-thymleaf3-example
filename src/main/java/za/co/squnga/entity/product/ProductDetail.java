@@ -21,5 +21,5 @@ public class ProductDetail {
     @OneToOne
     @JoinTable(name = "product_detail_belong_product",joinColumns = @JoinColumn(name = "product_detail_id", referencedColumnName = "product_detail_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name = "product_detail_product_fk")))
-    private BaseProduct product;
+    private Product product;
 }

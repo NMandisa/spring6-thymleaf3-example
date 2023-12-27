@@ -17,7 +17,7 @@ import java.util.Collection;
 @ToString
 @Entity
 @Table(name = "product")
-public class BaseProduct extends AbstractProduct {
+public class Product extends AbstractProduct {
     @Column(name = "product_name")
     private String productName;
     @OneToOne

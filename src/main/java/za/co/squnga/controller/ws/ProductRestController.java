@@ -14,7 +14,9 @@ import za.co.squnga.dto.ProductDTO;
 import za.co.squnga.service.ProductService;
 import za.co.squnga.web.WebRestURIConstants;
 
-import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Noxolo.Mkhungo
@@ -33,18 +35,25 @@ public class ProductRestController {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public ResponseEntity<Collection<?>> productList (){
-        LOGGER.info("Products ............");
+    public ResponseEntity <?> productList (){
+        LOGGER.debug("Products ............");
         // Page <Product> productPage = //services findAll
         HttpHeaders headers = new HttpHeaders();//PaginationUtils - pagination header (page, "/products/");
         //return new ResponseEntity<>(productPage.getContent,headers, httpStatus-OK
-        if(productService.ProductList()==null) return new ResponseEntity<>(null,null,HttpStatus.FAILED_DEPENDENCY);
-        else return new ResponseEntity<>(productService.ProductList(),null,HttpStatus.ACCEPTED);
+        Map< String, Object > responseProduct= new LinkedHashMap<>();
+        if( Objects.isNull(productService.ProductList())) {
+            responseProduct.put("status",0);
+            responseProduct.put("products",null);
+            return new ResponseEntity<>(responseProduct,null,HttpStatus.FAILED_DEPENDENCY);
+        }
+            responseProduct.put("status",1);
+            responseProduct.put("products",productService.ProductList());
+            return new ResponseEntity<>(responseProduct,null,HttpStatus.ACCEPTED);
     }
 
     @PostMapping(value = WebRestURIConstants.CREATE_PRODUCT, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
     produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDTO){
-        return new ResponseEntity<ProductDTO>(HttpStatus.OK);
+    public ResponseEntity <?> createProduct(@RequestBody ProductDTO productDTO){
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

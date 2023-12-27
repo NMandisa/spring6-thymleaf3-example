@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import za.co.squnga.dto.ProductDTO;
-import za.co.squnga.entity.Product;
+import za.co.squnga.entity.product.Product;
 
 import java.util.logging.Logger;
 

@@ -2,7 +2,7 @@ package za.co.squnga.entity.catalog;
 
 import jakarta.persistence.*;
 import lombok.*;
-import za.co.squnga.entity.product.BaseProduct;
+import za.co.squnga.entity.product.Product;
 
 import java.util.Collection;
 
@@ -30,5 +30,5 @@ public class CatalogItem {
     @ManyToMany
     @JoinTable(name = "catalog_item_has_product",joinColumns = @JoinColumn(name = "catalog_item_id", referencedColumnName = "catalog_item_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name = "catalog_item_product_fk")))
-    private Collection<BaseProduct> product;
+    private Collection<Product> product;
 }

@@ -28,5 +28,5 @@ public class ProductReview {
     @ManyToOne
     @JoinTable(name = "product_review_belong_product",joinColumns = @JoinColumn(name = "product_review_id", referencedColumnName = "product_review_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id",foreignKey=@ForeignKey(name = "product_review_product_fk")))
-    private BaseProduct product;
+    private Product product;
 }

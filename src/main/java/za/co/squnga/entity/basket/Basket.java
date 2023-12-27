@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * @author Noxolo.Mkhungo
@@ -23,5 +24,14 @@ public class Basket extends AbstractBasket {
     @Override
     public Collection<? extends BasketItem> getBasketItems() {
         return basketItems;
+    }
+
+    public void addBasketItem(BasketItem basketItem){
+        basketItems.add(basketItem);
+        basketItem.setBasket(this);
+    }
+    public void removeBasketItem(BasketItem basketItem){
+        basketItems.remove(basketItem);
+        basketItem.setBasket(null);
     }
 }

@@ -2,7 +2,6 @@ package za.co.squnga.entity.order;
 
 import jakarta.persistence.*;
 import lombok.*;
-import za.co.squnga.entity.Return;
 
 /**
  * @author Noxolo.Mkhungo
@@ -23,7 +22,7 @@ public class OrderItem {
     @JoinColumn
     /*@JoinTable(name = "returned_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),
             inverseJoinColumns = @JoinColumn(name = "return_id", referencedColumnName = "return_id",foreignKey=@ForeignKey(name = "return_order_item_fk")))*/
-    private Return aReturn;
+    private ReturnOrderItem aReturn;
     @ManyToOne
     @JoinColumn
     /*@JoinTable(name = "order_order_items",joinColumns = @JoinColumn(name = "order_item_id", referencedColumnName = "order_item_id"),

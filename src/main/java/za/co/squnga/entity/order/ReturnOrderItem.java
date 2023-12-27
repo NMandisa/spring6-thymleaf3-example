@@ -1,4 +1,4 @@
-package za.co.squnga.entity;
+package za.co.squnga.entity.order;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +16,7 @@ import java.util.Collection;
 @ToString
 @Entity
 @Table(name = "return")
-public class Return implements Serializable {
+public class ReturnOrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "return_generator")
